@@ -1,1 +1,52 @@
-<p>blogs-list works!</p>
+<div class="list row">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h4>List of Blogs</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let blog of blogs; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveBlog(blog, i)">
+        {{ blog.title }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllBlogs()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-9">
+    <div *ngIf="currentBlog">
+      <div>
+        <h4>{{ currentBlog.title }}</h4>
+      </div>
+      <div>
+        <label><strong>Category:</strong></label>
+        {{ currentBlog.category }}
+      </div>
+      <div>
+        {{ currentBlog.description }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentBlog.published ? "Published" : "Pending" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/blogs/{{ currentBlog.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentBlog">
+      <br />
+      <p>Please click on a Blog...</p>
+    </div>
+  </div>
+</div>

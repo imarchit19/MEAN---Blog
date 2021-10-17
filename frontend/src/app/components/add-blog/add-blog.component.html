@@ -1,1 +1,29 @@
-<p>add-blog works!</p>
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="blog.title" name="title" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" required [(ngModel)]="blog.description"
+          name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Category</label>
+        <input class="form-control" id="category" required [(ngModel)]="blog.category" name="category" />
+      </div>
+
+      <button (click)="saveBlog()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Blog was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newBlog()">Add Another</button>
+      <a href="/"><button class="btn btn-success">Home</button></a>
+    </div>
+  </div>
+</div>

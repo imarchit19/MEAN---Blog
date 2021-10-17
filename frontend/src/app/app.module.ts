@@ -7,6 +7,10 @@ import { AddBlogComponent } from './components/add-blog/add-blog.component';
 import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 import { BlogsListComponent } from './components/blogs-list/blogs-list.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +20,10 @@ import { BlogsListComponent } from './components/blogs-list/blogs-list.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
